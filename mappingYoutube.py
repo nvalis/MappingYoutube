@@ -14,6 +14,7 @@ from gephistreamer import streamer
 
 '''
 TODO:
+ - requirements
  - logging
  - configParser
  - docstrings
@@ -46,7 +47,8 @@ class Channel:
 		if len(stats) == 2:
 			self.subscriptions, self.views = stats
 
-			# clamping to prevent gephi crash ;-)
+			# dirty: clamping to prevent gephi crash ;-)
+			# better: use long!
 			max_int = 2**31 - 1
 			if self.subscriptions > max_int: self.subscriptions = max_int
 			if self.views > max_int: self.views = max_int
