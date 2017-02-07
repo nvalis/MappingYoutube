@@ -3,18 +3,18 @@
 
 import requests
 from lxml import etree
-from pprint import pprint
-from queue import Queue
-import threading
-from urllib.parse import urlparse, urlunsplit
-import time, hashlib
 
 from gephistreamer import graph
 from gephistreamer import streamer
 
+import threading
+from urllib.parse import urlparse, urlunsplit
+import time
+import hashlib
+import os
+
 '''
 TODO:
- - requirements
  - logging
  - configParser
  - docstrings
@@ -104,11 +104,14 @@ def scraper(queue, history):
 		add_to_graph(channel, channel.related_channels)
 
 def main():
-	queue = set()
-	history = open('nodes.csv').read().splitlines()[1:-1]
-	print('Read {} history items'.format(len(history)))
+	history_file = 'nodes.csv'
+	if os.path.isfile(history_file):
+		history = open(history_file).read().splitlines()[1:-1]
+		print('Read {} history items from {}.'.format(len(history), history_file))
 
 	start = Channel('https://www.youtube.com/user/BuzzFeedVideo/about', 'BuzzFeedVideo') # from experience rather central node
+
+	queue = set()
 	queue.add(start)
 
 	for i in range(5):
