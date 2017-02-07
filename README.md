@@ -6,3 +6,7 @@ The gathered data is streamed to [Gephi](https://github.com/gephi/gephi) for vis
 The scraping is coordinated by a size limited, thread-safe python `set` as the queue to keep track of the channels to explore. It makes use of multithreading and a simple history to accelerate the exploration.
 
 ![Screenshot](/MappingYoutube.png "Screenshot")
+
+## Requirements
+
+For data streaming to Gephi you need the [`Graph Streaming`](https://marketplace.gephi.org/plugin/graph-streaming/) plugin available in Gephis plugin manager. When installed you will need to rightclick -> start the streaming master server.
