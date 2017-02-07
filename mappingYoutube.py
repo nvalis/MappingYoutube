@@ -108,6 +108,8 @@ def main():
 	if os.path.isfile(history_file):
 		history = open(history_file).read().splitlines()[1:-1]
 		print('Read {} history items from {}.'.format(len(history), history_file))
+	else:
+		history = []
 
 	start = Channel('https://www.youtube.com/user/BuzzFeedVideo/about', 'BuzzFeedVideo') # from experience rather central node
 
